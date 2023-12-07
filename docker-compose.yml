@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  redis:
+    image: "redis:7.2.3-alpine"
+    ports:
+      - "63791:6379"
+    volumes:
+      - cache:/data
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+volumes:
+    cache:
+        driver: local
